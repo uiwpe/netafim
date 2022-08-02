@@ -9,7 +9,6 @@ import { WeatherService } from '@service/weather.service'
   styleUrls: ['./system.component.scss']
 })
 export class SystemComponent implements OnInit {
-  now: Date = new Date()
   dateFormat: string = 'EEE dd MMM'
   timeFormat: string = 'hh:mm aaa'
 
@@ -37,7 +36,7 @@ export class SystemComponent implements OnInit {
   ]
   routePrefix: string = '/system/'
 
-  constructor(private location: LocationService,
+  constructor(public location: LocationService,
               private weather: WeatherService) {
   }
 

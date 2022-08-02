@@ -22,17 +22,21 @@ export class LocationComponent implements OnInit {
 
   handleAddressChange(address: any) {
     this.address = address.name
-    this.locationChanged.emit({
+    const location: Location = {
       lat: address.geometry.location.lat(),
-      lon: address.geometry.location.lng()
-    })
+      lon: address.geometry.location.lng(),
+      offset: address.utc_offset_minutes
+    }
+    console.log(location)
+    this.locationChanged.emit(location)
   }
 
   clear() {
     this.address = this.input.nativeElement.value = ''
     this.locationChanged.emit({
       lat: 0,
-      lon: 0
+      lon: 0,
+      offset: 0
     })
   }
 }

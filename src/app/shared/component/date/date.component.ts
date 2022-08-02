@@ -8,9 +8,7 @@ import { Timestamp } from '@model/weather.model'
 })
 export class DateComponent implements OnInit {
   @Input() format: string = ''
-  @Input() date: Date | Timestamp = new Date()
-
-  @Input() bold: boolean = false
+  @Input() date!: Date | Timestamp
 
   constructor() {
   }

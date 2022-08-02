@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { LocationService } from '@service/location.service'
-import * as moment from 'moment'
 import { BehaviorSubject, forkJoin, map, tap } from 'rxjs'
-import { environment } from '../../../environments/environment'
+import { environment } from '@env/environment'
 import { Temperature, Timestamp, WeatherModel } from '@model/weather.model'
 
 export type Units = 'standard' | 'metric' | 'imperial'
@@ -72,7 +71,7 @@ export class WeatherService {
     const [min, max] = [temp_min, temp_max]
     const clouds = input.clouds.all
     const {icon, main, description} = input.weather[0]
-    const date = !forecast ? Date.now() : input.dt * 1000
+    const date = !forecast ? Date.now() : +input.dt * 1000
     return {
       date,
 
@@ -94,14 +93,14 @@ export class WeatherService {
     //   acc[key].push(current)
     //   return acc
     // }, Object.create({}))
-    return  forecast
+    return forecast
   }
 
   minMax(input: any): any {
     return Object.keys(input).map((key: any) => {
       console.log(input[key])
-      const min = Math.min(...input[key].map((item: any) => item.temp));
-      const max = Math.max(...input[key].map((item: any) => item.temp));
+      const min = Math.min(...input[key].map((item: any) => item.temp))
+      const max = Math.max(...input[key].map((item: any) => item.temp))
       return {
         ...input[key],
         min,

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
+import { RouterModule } from '@angular/router'
 import { NotFoundComponent } from './not-found/not-found.component'
 
 const sharedPages = [
@@ -11,7 +12,8 @@ const sharedPages = [
     ...sharedPages
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     ...sharedPages

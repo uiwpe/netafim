@@ -5,9 +5,9 @@ type Code = number // 200, 300, 400
 type Message = number
 type Count = number
 
-export type Timestamp = number
+export type Timestamp = number | string
 export type Temperature = number | '-'
-type Timezone = number
+export type Timezone = number
 type CountryName = string
 type CityName = string
 

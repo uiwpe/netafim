@@ -8,8 +8,12 @@
   </tt-weather>
 
   <ng-container date-time>
-    <tt-date [format]="dateFormat" [date]="now" [bold]="true"></tt-date>
-    <tt-date [format]="timeFormat" [date]="now" [bold]="true"></tt-date>
+    <tt-date [format]="dateFormat"
+             ttBold
+             [date]="location.date | offset:location.offset"></tt-date>
+    <tt-date [format]="timeFormat"
+             ttBold
+             [date]="location.date | offset:location.offset"></tt-date>
   </ng-container>
 
   <tt-profile profile></tt-profile>

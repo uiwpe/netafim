@@ -39,6 +39,8 @@
 
   &-body {
     padding: 8px 24px;
+    max-height: 84vh;
+    overflow: auto;
   }
 }
 

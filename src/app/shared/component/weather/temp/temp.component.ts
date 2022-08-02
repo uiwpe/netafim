@@ -12,7 +12,6 @@ export class TempComponent implements OnInit {
   @Input() units: Units = 'metric'
 
   @Input() size: string = '1em'
-  @Input() bold: boolean = false
   constructor() { }
 
   ngOnInit(): void {

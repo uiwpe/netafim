@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core'
 import { SharedModule } from '../shared/shared.module'
 import { DevicesComponent } from './page/devices/devices.component'
 import { FarmComponent } from './page/farm/farm.component'
-import { HomeComponent } from './page/home/home.component'
 import { IrrigationComponent } from './page/irrigation/irrigation.component'
 import { RecyclingComponent } from './page/recycling/recycling.component'
 import { StatisticsComponent } from './page/statistics/statistics.component'
@@ -16,7 +15,6 @@ import { SystemComponent } from './system.component'
   declarations: [
     SystemComponent,
     // PAGES
-    HomeComponent,
     FarmComponent,
     IrrigationComponent,
     RecyclingComponent,

@@ -7,7 +7,9 @@
   </div>
   <div class="info">
     <div class="temp">
-      <tt-temp size="1.3em" [bold]="true" [temperature]="weather.temp"></tt-temp>
+      <tt-temp size="1.3em"
+               ttBold
+               [temperature]="weather.temp"></tt-temp>
     </div>
     <div class="clouds" *ngIf="weather.clouds !== '-'">
       {{weather.clouds | number:'1.0-0'}}%
