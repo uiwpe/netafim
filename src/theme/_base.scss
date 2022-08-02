@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Lato-Regular, Segoe UI, sans‑serif;
+  color: $font-color;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+main {
+  width: 100%;
+
+  padding: 24px 24px 24px 100px;
+  height: calc(100vh - var(--header-height));
+  overflow: hidden;
+  background: #F4F8FB;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b, .bold {
+  font-family: Lato-Bold;
+}

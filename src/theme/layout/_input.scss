@@ -1,0 +1,67 @@
+.search {
+
+  &-label {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    z-index: 0;
+    color: $grey;
+  }
+
+  &-location {
+    position: relative;
+
+    input {
+      border-radius: 8px;
+      padding: 8px 36px 8px 12px;
+      border: 1px solid $light-grey;
+
+      min-width: 240px;
+      width: 24vw;
+
+      transition: $all;
+
+      &::placeholder {
+        color: $light-grey;
+      }
+
+      &:hover {
+        border-color: $secondary;
+      }
+    }
+  }
+}
+
+input {
+  border-radius: 8px;
+  padding: 8px 36px 8px 12px;
+  border: 1px solid $light-grey;
+
+  min-width: 240px;
+  width: 24vw;
+
+  color: $primary;
+  background: transparent;
+  outline: none;
+
+  transition: $all;
+
+  &::placeholder {
+    color: $light-grey;
+  }
+
+  &:hover {
+    border-color: $secondary;
+    & ~ .icon {
+      stroke: $secondary;
+    }
+  }
+
+  &:active, &:focus {
+    border: 1px solid $primary;
+
+    & ~ .icon {
+      stroke: $primary;
+    }
+  }
+}

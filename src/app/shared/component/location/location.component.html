@@ -1,0 +1,12 @@
+<section class="search-location">
+  <input (onAddressChange)="handleAddressChange($event)"
+         id="search"
+         ngx-google-places-autocomplete
+         #inputElement
+         placeholder="Enter address"/>
+  <label for="search" class="search-label">
+    <i-feather class="icon"
+               (click)="clear()"
+               name="{{address ? 'x' : 'search'}}"></i-feather>
+  </label>
+</section>

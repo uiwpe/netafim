@@ -1,0 +1,5 @@
+<span [class.bold]="bold" *ngIf="temperature !== '-'; else empty">{{temperature | number:'1.0-0'}}°{{units === 'metric' ? 'C' : 'F'}}</span>
+
+<ng-template #empty>
+  -
+</ng-template>

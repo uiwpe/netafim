@@ -1,0 +1,24 @@
+<tt-header>
+  <div class="search" search>
+    <tt-location (locationChanged)="locationChanged($event)"></tt-location>
+  </div>
+
+  <tt-weather weather>
+    <tt-list></tt-list>
+  </tt-weather>
+
+  <ng-container date-time>
+    <tt-date [format]="dateFormat" [date]="now" [bold]="true"></tt-date>
+    <tt-date [format]="timeFormat" [date]="now" [bold]="true"></tt-date>
+  </ng-container>
+
+  <tt-profile profile></tt-profile>
+</tt-header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<tt-sidebar>
+  <tt-nav [prefix]="routePrefix" [routes]="routes"></tt-nav>
+</tt-sidebar>

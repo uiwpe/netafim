@@ -1,0 +1,26 @@
+.weather {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+  &:hover, &.active {
+    background: $active;
+  }
+
+  .icon {
+    margin-right: 12px;
+  }
+  .info {
+    .temp {
+      //font-size: 1.3em;
+    }
+    .clouds {
+      font-size: 0.666em;
+    }
+  }
+
+  .disabled {
+    cursor: not-allowed;
+  }
+}

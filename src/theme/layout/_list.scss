@@ -1,0 +1,30 @@
+table {
+  width: 100%;
+
+  .min-max, .date {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+
+    .split {
+      margin: 0 4px;
+    }
+  }
+
+  th {
+    color: $grey;
+    font-family: Lato-Regular, Segoe UI, sans‑serif;
+    font-weight: normal;
+    height: 42px;
+  }
+
+  td {
+    text-align: center;
+    min-width: 120px;
+    height: 60px;
+    &.top {
+      border-top: 1px solid $light-grey;
+    }
+  }
+}

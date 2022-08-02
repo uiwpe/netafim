@@ -1,0 +1,21 @@
+<header>
+  <section class="inline-flex left">
+    <div class="logo">
+      <tt-logo></tt-logo>
+    </div>
+    <ng-content select="[search]"></ng-content>
+  </section>
+
+  <section class="inline-flex right">
+    <div class="weather">
+      <ng-content select="[weather]"></ng-content>
+    </div>
+    <div class="date-time">
+      <ng-content select="[date-time]"></ng-content>
+    </div>
+    <div class="profile">
+      <ng-content select="[profile]"></ng-content>
+    </div>
+  </section>
+</header>
+

@@ -1,0 +1,10 @@
+<nav>
+  <ul class="nav">
+    <li *ngFor="let route of routes"
+        [routerLink]="prefix + route.url"
+        class="nav-link"
+        routerLinkActive="current">
+      <i-feather [name]="route.icon" class="icon"></i-feather>
+    </li>
+  </ul>
+</nav>

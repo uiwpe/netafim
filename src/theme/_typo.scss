@@ -1,0 +1,17 @@
+@mixin src($path, $family, $format) {
+  src: url("~assets/fonts/#{$path}/#{$family}.#{$format}") format("truetype");
+}
+
+@mixin font($family, $path, $weight: 400, $format: "ttf") {
+  @font-face {
+    font-family: $family;
+    @include src($path, $family, $format);
+    font-weight: $weight;
+    font-style: normal;
+    font-stretch: normal;
+  }
+}
+
+@include font("Lato-Thin", Lato, 100, "ttf");
+@include font("Lato-Regular", Lato, 400, "ttf");
+@include font("Lato-Bold", Lato, 700, "ttf");

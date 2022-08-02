@@ -1,0 +1,7 @@
+<div class="height" *ngIf="clouds !== '-'; else empty">
+  {{clouds}}{{unit}}
+</div>
+
+<ng-template  #empty>
+  -
+</ng-template>

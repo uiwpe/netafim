@@ -1,0 +1,20 @@
+<div class="weather"
+     [class.disabled]="!coords"
+     (click)="toggle(forecast)"
+     *ngIf="weather.weather | async as weather">
+  <div class="icon" title="{{weather.main}} | {{weather.description}}">
+    <tt-icon [name]="weather.icon"></tt-icon>
+  </div>
+  <div class="info">
+    <div class="temp">
+      <tt-temp size="1.3em" [bold]="true" [temperature]="weather.temp"></tt-temp>
+    </div>
+    <div class="clouds" *ngIf="weather.clouds !== '-'">
+      {{weather.clouds | number:'1.0-0'}}%
+    </div>
+  </div>
+</div>
+
+<tt-dropdown [visible]="coords && forecast">
+  <ng-content></ng-content>
+</tt-dropdown>
