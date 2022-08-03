@@ -45,6 +45,8 @@ export class SystemComponent implements OnInit {
 
   locationChanged(location: Location) {
     this.location.save(location)
-    this.weather.loadData()
+    if (location.lat || location.lon) {
+      this.weather.loadData()
+    }
   }
 }

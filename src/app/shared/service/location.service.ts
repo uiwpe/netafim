@@ -16,7 +16,11 @@ export interface Location {
   providedIn: 'root'
 })
 export class LocationService {
-  date: Observable<number> = interval(10000).pipe(startWith(moment().valueOf()),map(_ => moment().valueOf()))
+  date: Observable<number> = interval(10000)
+    .pipe(
+      startWith(moment().valueOf()),
+      map(_ => moment().valueOf())
+    )
   location: Location = {lat: 0, lon: 0, offset: 0}
 
   constructor() {
