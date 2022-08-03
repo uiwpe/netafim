@@ -1,7 +1,7 @@
 table {
   width: 100%;
 
-  .min-max, .date {
+  .min-max {
     display: inline-flex;
     align-items: center;
     flex-wrap: nowrap;
@@ -25,6 +25,19 @@ table {
     height: 60px;
     &.top {
       border-top: 1px solid $light-grey;
+    }
+
+    &.date {
+      min-width: 42px;
+    }
+  }
+  tr {
+    &.yesterday {
+      filter: grayscale(1);
+      opacity: 0.42;
+    }
+    &.current {
+      color: $secondary;
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
-import { Timestamp } from '@model/weather.model'
+import * as moment from 'moment'
+import { interval, map, Observable, startWith } from 'rxjs'
 
 export type Lat = number
 export type Lon = number
@@ -15,7 +16,7 @@ export interface Location {
   providedIn: 'root'
 })
 export class LocationService {
-  date: Timestamp = Date.now()
+  date: Observable<number> = interval(10000).pipe(startWith(moment().valueOf()),map(_ => moment().valueOf()))
   location: Location = {lat: 0, lon: 0, offset: 0}
 
   constructor() {

@@ -2,7 +2,6 @@ import { Lat, Lon } from '@service/location.service'
 
 type WeatherTitle = string // TODO:
 
-export type Timestamp = number | string
 export type Pressure = number | string
 export type Temperature = number | '-'
 
@@ -49,6 +48,10 @@ export interface CurrentWeather {
   wind_speed: number
   wind_deg: number
   weather: Weather[]
+}
+
+export interface HistoryWeather extends CurrentWeather {
+  history?: boolean
 }
 
 interface DailyTemp {

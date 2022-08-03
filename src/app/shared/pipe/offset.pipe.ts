@@ -1,12 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core'
-import { Timestamp } from '@model/weather.model'
 import * as moment from 'moment'
 
 @Pipe({
   name: 'offset'
 })
 export class OffsetPipe implements PipeTransform {
-  transform(value: Timestamp | number, offset: number): Timestamp | number {
+  transform(value: number | null, offset: number): number {
     if (!value) {
       return 0
     }

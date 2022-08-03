@@ -37,7 +37,7 @@ export class SystemComponent implements OnInit {
   routePrefix: string = '/system/'
 
   constructor(public location: LocationService,
-              private weather: WeatherService) {
+              public weather: WeatherService) {
   }
 
   ngOnInit() {

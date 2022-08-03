@@ -10,10 +10,10 @@
   <ng-container date-time>
     <tt-date [format]="dateFormat"
              ttBold
-             [date]="location.date | offset:location.offset"></tt-date>
+             [date]="(location.date | async) | offset:location.offset"></tt-date>
     <tt-date [format]="timeFormat"
              ttBold
-             [date]="location.date | offset:location.offset"></tt-date>
+             [date]="(location.date | async) | offset:location.offset"></tt-date>
   </ng-container>
 
   <tt-profile profile></tt-profile>

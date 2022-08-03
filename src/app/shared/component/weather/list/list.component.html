@@ -4,15 +4,43 @@
       {{col}}
     </th>
   </tr>
-  <tr *ngFor="let row of forecast">
-    <td>
-      <div class="date">
-        <tt-date format="EEE" [date]="row.dt"></tt-date>
-        <div class="split">
-          |
-        </div>
-        <tt-date format="dd MMM" [date]="row.dt"></tt-date>
+  <tr *ngIf="weather.yesterday$ | async as yesterday" class="yesterday">
+    <td class="date">
+      <tt-date format="EEE" class="uppercase" [date]="yesterday.dt * 1000"></tt-date>
+    </td>
+    <td class="date">
+      <div class="split">
+        |
       </div>
+    </td>
+    <td class="date">
+      <tt-date format="dd MMM" [date]="yesterday.dt * 1000"></tt-date>
+    </td>
+    <td>
+      <tt-icon [name]="yesterday.weather[0].icon"></tt-icon>
+    </td>
+    <td class="top">
+      <div class="min-max">
+        <div class="split">
+          -
+        </div>
+      </div>
+    </td>
+    <td class="top">
+      <tt-clouds [clouds]="yesterday.clouds"></tt-clouds>
+    </td>
+  </tr>
+  <tr *ngFor="let row of forecast; let i = index" [class.current]="!i">
+    <td class="date">
+      <tt-date format="EEE" class="uppercase" [date]="row.dt * 1000"></tt-date>
+    </td>
+    <td class="date">
+      <div class="split">
+        |
+      </div>
+    </td>
+    <td class="date">
+      <tt-date format="dd MMM" [date]="row.dt * 1000"></tt-date>
     </td>
     <td>
       <tt-icon [name]="row.weather[0].icon"></tt-icon>
@@ -29,6 +57,5 @@
     <td class="top">
       <tt-clouds [clouds]="row.clouds"></tt-clouds>
     </td>
-
   </tr>
 </table>

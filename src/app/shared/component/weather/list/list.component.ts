@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
   rows: WeatherRow[] = []
 
   cols: string[] = [
-    '', '', 'Min/Max', 'Clouds'
+    '', '', '', '', 'Min/Max', 'Clouds'
   ]
 
   dateFormat: string = 'EEE | dd MMM'

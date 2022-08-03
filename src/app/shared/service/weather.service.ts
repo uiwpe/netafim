@@ -4,14 +4,14 @@ import { LocationService } from '@service/location.service'
 import * as moment from 'moment'
 import { BehaviorSubject, forkJoin, map, Subject, tap } from 'rxjs'
 import { environment } from '@env/environment'
-import { CurrentWeather, DailyWeather, Temperature, Timestamp, WeatherModel } from '@model/weather.model'
+import { CurrentWeather, DailyWeather, HistoryWeather, Temperature } from '@model/weather.model'
 
 export type Units = 'standard' | 'metric' | 'imperial'
 
 export type ForecastIcon = string
 
 export interface Weather {
-  date: Timestamp
+  date: number
   temp: Temperature
   clouds: Temperature
   icon: ForecastIcon
@@ -42,7 +42,7 @@ const parts: Part[] = [
 export class WeatherService {
   units: Units = 'metric'
 
-  yesterday$: Subject<Weather> = new Subject<Weather>()
+  yesterday$: Subject<HistoryWeather> = new Subject<HistoryWeather>()
   weather$: Subject<CurrentWeather> = new Subject<CurrentWeather>()
   forecast$: Subject<Forecast> = new BehaviorSubject<Forecast>([])
 
@@ -65,6 +65,9 @@ export class WeatherService {
       .pipe(
         map((response: any) => {
           return response['data'][0]
+        }),
+        tap(weather => {
+          this.yesterday$.next(weather)
         })
       )
   }
@@ -84,10 +87,10 @@ export class WeatherService {
     const part: Part = 'daily'
     return this.oneCall(part)
       .pipe(
-        map((response: DailyWeather[]) => response.slice(0, 5))
-        // tap((forecast) => {
-        //   this.forecast.next(forecast)
-        // })
+        map((response: DailyWeather[]) => response.slice(0, 6)),
+        tap((forecast) => {
+          this.forecast$.next(forecast)
+        })
     )
   }
 
@@ -98,13 +101,8 @@ export class WeatherService {
 
   loadData() {
     return forkJoin([this.getYesterday(), this.getWeather(), this.getForecast()])
-      .pipe(
-        map((a) => {
-          console.log(a)
-        })
-      )
-      .subscribe(response => {
-        // console.log({response})
+      .subscribe(list => {
+        console.log({list})
       })
   }
 }
