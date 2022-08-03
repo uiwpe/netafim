@@ -5,9 +5,7 @@
 export const environment = {
   production: false,
   API: {
-    history: 'https://pro.openweathermap.org/data/2.5/forecast/hourly',
-    weather: 'https://api.openweathermap.org/data/2.5/weather',
-    forecast: 'https://api.openweathermap.org/data/2.5/forecast',
+    url: 'https://api.openweathermap.org/data/3.0/onecall',
     appid: '9a33d7a46ba5437b07830346819bdc24'
   }
 };

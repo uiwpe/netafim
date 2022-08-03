@@ -1,52 +1,10 @@
-type WeatherTitle = string | 'Clouds' // TODO:
-type Base = string | 'stations' // TODO:
+import { Lat, Lon } from '@service/location.service'
 
-type Code = number // 200, 300, 400
-type Message = number
-type Count = number
+type WeatherTitle = string // TODO:
 
 export type Timestamp = number | string
+export type Pressure = number | string
 export type Temperature = number | '-'
-export type Timezone = number
-type CountryName = string
-type CityName = string
-
-interface City {
-  id: number
-  name: CityName
-  coord: Location
-  country: CountryName
-  population: number
-  timezone: Timezone
-  sunrise: Timestamp
-  sunset: Timestamp
-}
-
-interface Main {
-  temp: number
-  feels_like: number
-  temp_min: number
-  temp_max: number
-  pressure: number
-  humidity: number
-}
-
-interface Wind {
-  speed: number
-  deg: number
-}
-
-interface Clouds {
-  all: number
-}
-
-interface WeatherSys {
-  type: number
-  id: number
-  country: CountryName
-  sunrise: Timestamp
-  sunset: Timestamp
-}
 
 type WeatherIcon =
   '01d'
@@ -76,26 +34,66 @@ interface Weather {
   icon: WeatherIcon
 }
 
-export interface WeatherModel {
-  coord: Location
+export interface CurrentWeather {
+  dt: number
+  sunrise: number
+  sunset: number
+  temp: Temperature
+  feels_like: Temperature
+  pressure: Pressure
+  humidity: number
+  dew_point: number
+  uvi: number
+  clouds: number
+  visibility: number
+  wind_speed: number
+  wind_deg: number
   weather: Weather[]
-  base: Base
-  main: Main
-  visibility: number,
-  wind: Wind,
-  clouds: Clouds,
-  dt: Timestamp,
-  sys: WeatherSys,
-  timezone: Timezone,
-  id: number,
-  name: CityName,
-  cod: Code
 }
 
-export interface ForecastModel {
-  cod: Code
-  message: Message
-  cnt: Count
-  list: WeatherModel[],
-  city: City
+interface DailyTemp {
+  day: number
+  min: number
+  max: number
+  night: number
+  eve: number
+  morn: number
+}
+
+interface FeelsLikeTemp {
+  day: number
+  night: number
+  eve: number
+  morn: number
+}
+
+export interface DailyWeather {
+  dt: number
+  sunrise: number
+  sunset: number
+  moonrise: number
+  moonset: number
+  moon_phase: number
+  temp: DailyTemp
+  feels_like: FeelsLikeTemp
+  pressure: Pressure
+  humidity: number
+  dew_point: number
+  wind_speed: number
+  wind_deg: number
+  wind_gust: number
+  weather: Weather[]
+  clouds: number
+  pop: number
+  rain: number
+  uvi: number
+}
+
+export interface WeatherModel {
+  lat: Lat,
+  lon: Lon,
+  timezone: string,
+  timezone_offset: number,
+  current?: CurrentWeather,
+  daily?: DailyWeather[]
 }

@@ -1,9 +1,9 @@
 <div class="weather"
      [class.disabled]="!coords"
      (click)="toggle(forecast)"
-     *ngIf="weather.weather | async as weather">
-  <div class="icon" title="{{weather.main}} | {{weather.description}}">
-    <tt-icon [name]="weather.icon"></tt-icon>
+     *ngIf="weather.weather$ | async as weather">
+  <div class="icon">
+    <tt-icon [name]="weather.weather[0].icon"></tt-icon>
   </div>
   <div class="info">
     <div class="temp">
@@ -11,7 +11,7 @@
                ttBold
                [temperature]="weather.temp"></tt-temp>
     </div>
-    <div class="clouds" *ngIf="weather.clouds !== '-'">
+    <div class="clouds">
       {{weather.clouds | number:'1.0-0'}}%
     </div>
   </div>

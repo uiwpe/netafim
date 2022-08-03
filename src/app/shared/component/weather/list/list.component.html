@@ -1,4 +1,4 @@
-<table *ngIf="weather.forecast | async as forecast">
+<table *ngIf="weather.forecast$ | async as forecast">
   <tr>
     <th *ngFor="let col of cols">
       {{col}}
@@ -7,23 +7,23 @@
   <tr *ngFor="let row of forecast">
     <td>
       <div class="date">
-        <tt-date format="EEE" [date]="row.date"></tt-date>
+        <tt-date format="EEE" [date]="row.dt"></tt-date>
         <div class="split">
           |
         </div>
-        <tt-date format="dd MMM" [date]="row.date"></tt-date>
+        <tt-date format="dd MMM" [date]="row.dt"></tt-date>
       </div>
     </td>
     <td>
-      <tt-icon [name]="row.icon"></tt-icon>
+      <tt-icon [name]="row.weather[0].icon"></tt-icon>
     </td>
     <td class="top">
       <div class="min-max">
-        <tt-temp [temperature]="row.min"></tt-temp>
+        <tt-temp [temperature]="row.temp.min"></tt-temp>
         <div class="split">
           -
         </div>
-        <tt-temp [temperature]="row.max"></tt-temp>
+        <tt-temp [temperature]="row.temp.max"></tt-temp>
       </div>
     </td>
     <td class="top">

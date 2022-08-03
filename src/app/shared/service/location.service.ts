@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core'
 import { Timestamp } from '@model/weather.model'
-import * as moment from 'moment'
+
+export type Lat = number
+export type Lon = number
 
 export interface Location {
-  lat: number
-  lon: number
+  lat: Lat
+  lon: Lon
   offset: number
   name?: string
 }
@@ -24,8 +26,7 @@ export class LocationService {
   }
 
   get coordinates(): Location {
-    const {lat, lon, offset} = this.location
-    return {lat, lon, offset}
+    return {...this.location}
   }
 
   get offset(): number {
